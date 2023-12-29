@@ -236,31 +236,11 @@ color 07
 title  Microsoft_Activation_Scripts %masver%
 mode 76, 30
 
-echo:
-echo:
-echo:
-echo:
-echo:       ______________________________________________________________
-echo:
-echo:                 Activation Methods:
-echo:
-echo:             [1] HWID        ^|  Windows           ^|   Permanent
-echo:             [2] Ohook       ^|  Office            ^|   Permanent
-echo:             [3] KMS38       ^|  Windows           ^|   Year 2038
-echo:             [4] Online KMS  ^|  Windows / Office  ^|    180 Days
-echo:             __________________________________________________      
-echo:
-echo:             [5] Activation Status
-echo:             [6] Troubleshoot
-echo:             [7] Extras
-echo:             [8] Help
-echo:             [0] Exit
-echo:       ______________________________________________________________
-echo:
+
 call :_color2 %_White% "          " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,5,6,7,8,0] :"
 choice /C:123456780 /N
 set _erl=%errorlevel%
-
+%_erl%==2
 if %_erl%==9 exit /b
 if %_erl%==8 start %mas%troubleshoot.html & goto :MainMenu
 if %_erl%==7 goto:Extras
@@ -279,25 +259,7 @@ goto :MainMenu
 cls
 title  Extras
 mode 76, 30
-echo:
-echo:
-echo:
-echo:
-echo:
-echo:       ______________________________________________________________
-echo:
-echo:             [1] Change Windows Edition
-echo:
-echo:             [2] Extract $OEM$ Folder
-echo:
-echo:             [3] Activation Status [vbs]
-echo:
-echo:             [4] Download Genuine Windows / Office
-echo:             __________________________________________________      
-echo:                                                                     
-echo:             [0] Go to Main Menu
-echo:       ______________________________________________________________
-echo:
+
 call :_color2 %_White% "           " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,0] :"
 choice /C:12340 /N
 set _erl=%errorlevel%
@@ -1742,25 +1704,11 @@ cls
 mode 76, 25
 title  Ohook Activation %masver%
 
-echo:
-echo:
-echo:
-echo:
-echo         ____________________________________________________________
-echo:
-echo                 [1] Install Ohook Office Activation
-echo:
-echo                 [2] Uninstall
-echo                 ____________________________________________
-echo:
-echo                 [3] Download Office
-echo:
-echo                 [0] %_exitmsg%
-echo         ____________________________________________________________
-echo: 
 call :dk_color2 %_White% "              " %_Green% "Enter a menu option in the Keyboard [1,2,3,0]"
 choice /C:1230 /N
 set _el=!errorlevel!
+_el=1
+
 if !_el!==4  exit /b
 if !_el!==3  start %mas%genuine-installation-media.html &goto :oh_menu
 if !_el!==2  goto :oh_uninstall

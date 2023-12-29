@@ -240,7 +240,7 @@ mode 76, 30
 call :_color2 %_White% "          " %_Green% "Enter a menu option in the Keyboard [1,2,3,4,5,6,7,8,0] :"
 choice /C:123456780 /N
 set _erl=%errorlevel%
-%_erl%==2
+_erl=2
 if %_erl%==9 exit /b
 if %_erl%==8 start %mas%troubleshoot.html & goto :MainMenu
 if %_erl%==7 goto:Extras
